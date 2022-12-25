@@ -1,0 +1,12 @@
+<h1>Success</h1>
+
+<b> Checkout status:</b> <%= @session_with_expand.payment_status %>
+<br>
+<b>Amount paid:</b> 
+<%= @session_with_expand.amount_total/100.to_f %>
+<%= @session_with_expand.currency %>
+<% @session_with_expand.line_items.data.each do |line_item| %>
+  <% product = Product.find_by(name: line_item.description) %>
+  <br>
+  <b>Item Name:</b> <%= product.name %>
+<% end %>
